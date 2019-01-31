@@ -1,0 +1,183 @@
+// 1) Create a Database called music​.
+
+    //     code:var MongoClient = require('mongodb').MongoClient;
+    //      //Create a database named "mydb":
+    //    var url = "mongodb://localhost:27017/music";
+     //
+    //   MongoClient.connect(url, function(err, db) {
+    //   if (err) throw err;
+    //  console.log("Database created!");
+    //   db.close();
+    //    });
+
+
+//
+// // 2) Create a colle1)ction called songdetails​.
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("music");
+//   dbo.createCollection("songdetails", function(err, res) {
+//     if (err) throw err;
+//     console.log("Collection created!");
+//     db.close();
+  // });
+// });
+//
+//
+//
+// // 3) Create the above 5 song documents.
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("music");
+//   var myobj = [
+//     {
+//     Songname : "Thaniye Thananthaniye",flim: "Rhythm",Musicdirector: "A.R.Rahman",Singer: "Shankar mahadevan"
+//   },
+//   {
+//     Songname: "Evano oruvan",flim: "Alai payuthe",Musicdirector: "A.R.Rahman",Singer: "Swarnalatha"
+//   },
+//   {
+//     Songname: "Roja poonthooddam",flim: "Kannukkul nilavu",Musicdirector : "Ilaiyaraja",Singer: "unnikrishnan,Anuradha Sriram"
+//   },
+//   {
+//     Songname : "Vennilave venilave vinnaithaandi",flim: "Minsarak kanavu",Musicdirector: "A.R.Rahman",Singer: "Hariharan,Sadhana Sargam"
+//   },
+//   {
+//     Songname : "Sollamal thottu chellum thendral",film: "Dheena", Musicdirector: "Yuvan Shankar Raja",Singer: "Hariharan"
+//   }
+//   ];
+//
+//
+//   dbo.collection("songdetails").insertMany(myobj, function(err, res) {
+//     if (err) throw err;
+//     console.log("Number of documents inserted: " + res.insertedCount);
+//     db.close();
+//   });
+// });
+
+
+// // 4) List all documents created.
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("music");
+//   dbo.collection("songdetails").find({}).toArray(function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     db.close();
+//   });
+// });
+//
+// // 5) List A.R.Rahman’s songs.
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("music");
+//   var query = { Musicdirector: "A.R.Rahman" };
+//   dbo.collection("songdetails").find(query).toArray(function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     db.close();
+//   });
+// });
+
+//
+// // 6) List A.R.Rahman’s songs sung by Unnikrishnan.
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("music");
+//   /*Return only the documents with the address "Park Lane 38":*/
+//   var query = { Musicdirector: "Ilaiyaraja", Singer: "unnikrishnan,Anuradha Sriram" };
+//   dbo.collection("songdetails").find(query).toArray(function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     db.close();
+//   });
+// });
+//
+//
+// // 7) Delete the song which you don’t like.
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("music");
+//   var myquery = { Songname: "Roja poonthooddam"};
+//   dbo.collection("songdetails").deleteOne(myquery, function(err, obj) {
+//     if (err) throw err;
+//     console.log("1 document deleted");
+//     db.close();
+//   });
+// });
+//
+//
+//
+//
+//
+// // 8) Add new song which is your favourite.
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("music");
+//   var myobj = { Songname: "Ilamai thirumputhey", flim: "pettah", Musicdirector: "Aniruth", Singer: "Aniruth"};
+//   dbo.collection("songdetails").insertOne(myobj, function(err, res) {
+//     if (err) throw err;
+//     console.log("1 document inserted");
+//     db.close();
+//   });
+// });
+//
+// // 9) List Songs sung by Hariharan from Minsara kanavu film.
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("music");
+//
+//   var query = {flim: "Minsarak kanavu",Singer: "Hariharan" };
+//   dbo.collection("songdetails").find(query).toArray(function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     db.close();
+//   });
+// });
+//
+// // 10)List out the singers’ names in your document.
+//
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("music");
+  dbo.collection("songdetails").find({}, { _id:0,Singer:1,Songname:0, film:0,Musicdirector:0 }).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
